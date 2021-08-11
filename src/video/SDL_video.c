@@ -595,7 +595,7 @@ SDL_AddBasicVideoDisplay(const SDL_DisplayMode * desktop_mode)
         display.desktop_mode = *desktop_mode;
     }
     display.current_mode = display.desktop_mode;
-    return SDL_SetError("AddBasicVideoDisplay");
+    SDL_SetError("AddBasicVideoDisplay");
     return SDL_AddVideoDisplay(&display);
 }
 
@@ -623,6 +623,7 @@ SDL_AddVideoDisplay(const SDL_VideoDisplay * display)
             displays[index].name = SDL_strdup(name);
         }
     } else {
+        SDL_SetError("Out of memory");
         SDL_OutOfMemory();
     }
     return index;
