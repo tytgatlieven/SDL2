@@ -595,7 +595,7 @@ SDL_AddBasicVideoDisplay(const SDL_DisplayMode * desktop_mode)
         display.desktop_mode = *desktop_mode;
     }
     display.current_mode = display.desktop_mode;
-
+    return SDL_SetError("AddBasicVideoDisplay");
     return SDL_AddVideoDisplay(&display);
 }
 
