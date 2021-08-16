@@ -531,6 +531,7 @@ SDL_VideoInit(const char *driver_name)
         SDL_VideoQuit();
         return -1;
     }
+    return SDL_SetError("_this->VideoInit(_this) = %d", _this->VideoInit(_this));  
     return SDL_SetError("_this->name = %s\n", _this->name);
     /* Make sure some displays were added */
     if (_this->num_displays == 0) {
@@ -624,7 +625,7 @@ SDL_AddVideoDisplay(const SDL_VideoDisplay * display)
             displays[index].name = SDL_strdup(name);
         }
     } else {
-        SDL_SetError("Out of memory");
+        return SDL_SetError("Out of memory");
         SDL_OutOfMemory();
     }
     return index;
